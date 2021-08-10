@@ -96,6 +96,16 @@ else:
     with open(os.getcwd()+"/config.json" , "w+") as f:
         json.dump(configTemplate, f)
 
+if os.path.exists(os.getcwd()+"/prefix.json"):
+    
+    with open("./prefix.json") as f:
+        configData = json.load(f)
+
+else:
+    configTemplate = {"GUILD ID HERE":"PREFIX"}
+    with open(os.getcwd()+"/prefix.json" , "w+") as f:
+        json.dump(configTemplate, f)
+
 Token = configData["Token"]
 
 @bot.command()
