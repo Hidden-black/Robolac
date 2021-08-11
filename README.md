@@ -2,7 +2,7 @@
 Robolac
 
 idk run the code once and then a config.json apeers just put the token their 
-next step just make a prefix.json and run the code and
+next step run the code and
 MAKE SURE BOT IS RUNNING WHILE ADDING IT TO A GUILD
 or u can register the bot prefix by this template in prefix.json 
 
