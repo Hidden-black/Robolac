@@ -269,3 +269,10 @@ class Fun(commands.Cog, name= "Fun"):
 def setup(bot):
     bot.add_cog(Fun(bot))
     print("Fun cog is loaded")
+
+
+"""
+U ARE here for this cog lol 
+best cog in my whole bot with all stuff needed to have fun might add tictaktoe
+chatbot is also being worked on
+"""

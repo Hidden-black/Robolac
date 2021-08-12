@@ -20,7 +20,7 @@ bot = commands.Bot(command_prefix=',')
 bot.remove_command('help')
 
 
-class Fact(commands.Cog, name= "Jsk"):
+class Fact(commands.Cog, name= "FACT"):
 
     def __init__(self,bot):
         self.bot = bot
@@ -58,3 +58,7 @@ class Fact(commands.Cog, name= "Jsk"):
 def setup(bot):
     bot.add_cog(Fact(bot))
     print("Fact cog is loaded")
+
+"""
+ANOTHER FUCKING AIOHTTP COG 
+"""

@@ -67,3 +67,6 @@ class Owner(commands.Cog, name= "Owner"):
 def setup(bot):
     bot.add_cog(Owner(bot))
     print("Owner cog is loaded")
+
+
+    # ANOTHER STUPID COG REMOVE IT IF U WANTs

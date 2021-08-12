@@ -253,3 +253,10 @@ class Help(commands.Cog, name= "Help"):
 def setup(bot):
     bot.add_cog(Help(bot))
     print("Help cog is loaded")
+
+
+"""
+WORST HELP COMMAND IDK BUT IF WORKS 
+
+
+p.s. Sans dont tell me it is bad"""
