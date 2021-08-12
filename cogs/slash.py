@@ -26,7 +26,9 @@ class tt(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-
+"""
+WILL USE THIS COG WHEN MY BOT GET VERIFIED LMAO XD
+"""
 
 def setup(bot):
     bot.add_cog(tt(bot))

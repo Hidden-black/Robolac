@@ -135,7 +135,7 @@ async def on_command_error(ctx,error):
 
 @bot.event                                                      #JUST A COMMAND TO KEEP LOGS
 async def on_command(ctx):
-    channel = bot.get_channel(CHANNEL ID IN STR FORMAT)
+    channel = bot.get_channel("CHANNEL ID IN STR FORMAT")
     e = discord.Embed(title = f"Command Used in : `{ctx.guild.name}`", description = f"Used by : `{ctx.author.name}`",color = ctx.author.color)
     e.add_field(name=f"Command name : ",value=f"{ctx.command}")
     e.add_field(name=f"Channel : `{ctx.channel.name}`",value= f"ID : {ctx.channel.id}")
