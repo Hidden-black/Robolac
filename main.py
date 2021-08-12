@@ -33,7 +33,7 @@ bot.load_extension('jishaku')
 
 
 
-@bot.event
+@bot.event                                                      #PREFIX BEING ADDED ON GUILD JOIN
 async def on_guild_join(guild):
     with open('prefix.json','r') as f:
         prefix = json.load(f)
@@ -42,7 +42,7 @@ async def on_guild_join(guild):
     with open('prefix.json','w') as f:
         json.dump(prefix,f,indent=4)
 
-@bot.event
+@bot.event                                                      #PREFIX BEING REMOVED ON GUILD JOIN
 async def on_guild_remove(guild):
     with open('prefix.json','r') as f:
         prefix = json.load(f)
@@ -51,7 +51,7 @@ async def on_guild_remove(guild):
     with open('prefix.json','w') as f:
         json.dump(prefix,f,indent=4)
 
-@bot.command()
+@bot.command()                                                  #COMMAND TO SET PREFIX
 @commands.has_permissions(manage_channels=True)
 async def setprefix(ctx, prefixset):
     with open('prefix.json','r') as f:
@@ -96,56 +96,46 @@ else:
     with open(os.getcwd()+"/config.json" , "w+") as f:
         json.dump(configTemplate, f)
 
-if os.path.exists(os.getcwd()+"/prefix.json"):
-    
-    with open("./prefix.json") as f:
-        configData = json.load(f)
-
-else:
-    configTemplate = {"GUILD ID HERE":"PREFIX"}
-    with open(os.getcwd()+"/prefix.json" , "w+") as f:
-        json.dump(configTemplate, f)
-
 Token = configData["Token"]
 
-@bot.command()
+@bot.command()                                                  #LOAD A COG
 @commands.is_owner()
 async def load(ctx, extension):
     bot.load_extension(f'cogs.{extension}')
     await ctx.send(f'loaded {extension}')
 
-@bot.command()
+@bot.command()                                                  #UNLOAD A COG
 @commands.is_owner()
 async def unload(ctx, extension):
     bot.unload_extension(f'cogs.{extension}')
     await ctx.send(f'unloaded {extension}')
 
-@bot.command()
+@bot.command()                                                  #RELOAD A COG
 @commands.is_owner()
 async def reload(ctx, extension):
     bot.reload_extension(f'cogs.{extension}')
     await ctx.send(f'Reloaded {extension}')
 
-@bot.command()                                                                            
+@bot.command()                                                  #PING TEST                                  
 async def ping(ctx):
     await ctx.send(f'{round(bot.latency * 1000)}ms')
 
-@bot.event                                                                                                                                       
+@bot.event                                                      #IDK WHY I PUT IT HERE LMAO                                                                                                       
 async def on_message(message):
     if bot.user.mentioned_in(message):
         await message.add_reaction("<:ping:861565960154251264>")
     await bot.process_commands(message)
 
-@bot.event
+@bot.event                                                      #ERROR HANDLER FOR COOLCOWN COMMANDS
 async def on_command_error(ctx,error):
     if isinstance(error , commands.CommandOnCooldown):
         msg = '**Command on cooldown wait**,{:.2f}s before trying again'.format(error.retry_after)
         await ctx.send(msg)
         await ctx.message.delete()
 
-@bot.event
+@bot.event                                                      #JUST A COMMAND TO KEEP LOGS
 async def on_command(ctx):
-    channel = bot.get_channel(873104600910143490)
+    channel = bot.get_channel(CHANNEL ID IN STR FORMAT)
     e = discord.Embed(title = f"Command Used in : `{ctx.guild.name}`", description = f"Used by : `{ctx.author.name}`",color = ctx.author.color)
     e.add_field(name=f"Command name : ",value=f"{ctx.command}")
     e.add_field(name=f"Channel : `{ctx.channel.name}`",value= f"ID : {ctx.channel.id}")
@@ -156,10 +146,35 @@ async def on_command(ctx):
 
 
 
-@bot.event
+@bot.event                                                     #activity
 async def on_ready():
     await bot.change_presence(activity=discord.Streaming(name="Follow my Twitch lol", url="https://www.twitch.tv/hidden_black_"))
     DiscordComponents(bot)
     print("Bot is ready!")
 
 bot.run(Token)
+
+
+"""
+MIT License
+
+Copyright (c) 2021 TheHiddenBlack1
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
