@@ -77,3 +77,7 @@ class Say(commands.Cog, name= "Say"):
 def setup(bot):
     bot.add_cog(Say(bot))
     print("Say cog is loaded")
+
+
+
+#IDK WHY THIS COG EXIST

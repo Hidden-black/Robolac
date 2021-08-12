@@ -16,7 +16,7 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-class Reddit(commands.Cog, name= "Reddit"):
+class Reddit(commands.Cog, name= "Reddit"):                                                     #another bad aiohttp request to eat your ram
 
     def __init__(self,bot):
         self.bot = bot

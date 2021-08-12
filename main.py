@@ -27,7 +27,7 @@ def get_prefix(bot,message):
 
 bot = commands.Bot(command_prefix=get_prefix, intents= discord.Intents.all() , case_insensitive=True)
 bot.launch_time = datetime.utcnow()
-bot.owner_ids = [842950909159145493,740906193312284715]
+bot.owner_ids = ["OWNER ID IN STR FORMAT DELETE THIS IF SINGLE OWNER USERS"]
 bot.remove_command('help')
 bot.load_extension('jishaku')
 

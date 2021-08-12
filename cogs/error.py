@@ -28,7 +28,7 @@ class Error(commands.Cog, name= "Error"):
     def __init__(self,bot):
         self.bot = bot
     
-    @commands.Cog.listener()
+    @commands.Cog.listener()                            #ERROR HANDLING
     async def on_command_error(self ,ctx ,error):
         if isinstance(error,commands.NotOwner):
             em = discord.Embed(title = 'Error While executing command' ,description="You are not the Bot owner" , color = ctx.author.color)
