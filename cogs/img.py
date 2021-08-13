@@ -44,7 +44,7 @@ class IMG(commands.Cog, name= "IMAGE"): #I AM IDIOT THAT IS WHY IT GETS A REQUES
     @commands.command()
     async def img(self,ctx, arg):
         async with aiohttp.ClientSession() as cs:
-            async with cs.get(f'https://api.unsplash.com/search/photos?query={arg}&client_id=kt4I9LIgyzPpqPxmqkMYnTzqlTPmUNFQLJxjIahksd0') as r:
+            async with cs.get(f'https://api.unsplash.com/search/photos?query={arg}&client_id=') as r: #get client_id from UNSPLASH API and make a application their 
                 res = await r.json()
                 ri = random.randint(0,50)
                 raw_results = res["results"]

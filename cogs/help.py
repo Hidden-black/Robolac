@@ -35,6 +35,7 @@ class Help(commands.Cog, name= "Help"):
         em.add_field(name = "Image" , value = "`.img`,`.cat`,`.dog`" , inline= False)
         em.add_field(name = "Fact" , value = "`.fact`,`.fact cat`,`.fact dog`" , inline= False)
         em.add_field(name = "Invite The bot to your server with `.invite`" , value = "_ _" , inline= False)
+        em.add_field(name = "You can change the prefix with `.setprefix`",value =f"_ _", inline= False)
         em.add_field(name = "_ _",value =f"**[Check out My Website!](https://main-index.thehiddenblack1.repl.co)**", inline= False)
 
         await ctx.send(embed = em)
@@ -253,10 +254,3 @@ class Help(commands.Cog, name= "Help"):
 def setup(bot):
     bot.add_cog(Help(bot))
     print("Help cog is loaded")
-
-
-"""
-WORST HELP COMMAND IDK BUT IF WORKS 
-
-
-p.s. Sans dont tell me it is bad"""
