@@ -33,3 +33,5 @@ I recommend using a database like mongodb for storeing token
 - [Discord Server](https://discord.gg/5gDzeDgF5U)
 
 P.S. dont tell me about my help command is bad in issues ik it is bad i will work on it
+
+ignore
