@@ -31,6 +31,8 @@ I recommend using a database like mongodb for storeing token
 - Twitter - [@hiddenblack](https://twitter.com/Hidden_Black_)
 - Instagram - [@hidden_black__](https://www.instagram.com/hidden_black__/)
 - [Discord Server](https://discord.gg/5gDzeDgF5U)
+- [Top.gg](https://top.gg/bot/845248927652905011)
+- [Discord bot list](https://discordbotlist.com/bots/robolac)
 
 
 P.S. dont tell me about my help command is bad in issues ik it is bad i will work on it
