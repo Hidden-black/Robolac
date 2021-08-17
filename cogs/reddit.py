@@ -44,22 +44,31 @@ class Reddit(commands.Cog, name= "Reddit"):                                     
 
     @commands.command()
     async def joke(self ,ctx):
+        jokepage = [
+            "https://www.reddit.com/r/joke/hot.json",
+            "https://www.reddit.com/r/jokesmemes/hot.json"
+            ]
+
         async with aiohttp.ClientSession() as cs:
-            async with cs.get('https://www.reddit.com/r/jokes/hot.json') as r:
+            async with cs.get(f"{random.choice(jokepage)}") as r:
                 res = await r.json()
-                random_joke = random.randint(1,25)
+                random_joke = random.randint(1,10)
                 jl = res['data']['children'] [random_joke]['data']['permalink']
                 title = res['data']['children'] [random_joke]['data']['title']
                 text = res['data']['children'] [random_joke]['data']["selftext"]
                 ups = res['data']['children'] [random_joke]['data']['ups']
                 com = res['data']['children'] [random_joke]['data']['num_comments']
-                em = discord.Embed(title = '' ,description=f"**[{title}](http://www.reddit.com{jl})**" , color = ctx.author.color)
-                em.add_field(name= f"{text}" , value = '_ _', inline = False)
-                em.set_footer(text = f'⬆️{ups} | 💬{com}')
+                nsfw = res['data']['children'] [random_joke]['data']["over_18"]
 
+                if nsfw == False:
+                    em = discord.Embed(title = '' ,description=f"**[{title}](http://www.reddit.com{jl})**" , color = ctx.author.color)
+                    em.add_field(name= f"{text}" , value = '_ _', inline = False)
+                    em.set_footer(text = f'⬆️{ups} | 💬{com}')
 
-                    
-                await ctx.send(embed=em)
+                    await ctx.send(embed=em)
+
+                else:
+                    pass
 
 def setup(bot):
     bot.add_cog(Reddit(bot))
