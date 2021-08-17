@@ -16,6 +16,11 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
+def get_prefix(bot,message):
+    with open('prefix.json','r') as f:
+        prefix = json.load(f)
+    return prefix[str(message.guild.id)]
+
 bot = commands.Bot(command_prefix='.')
 bot.launch_time = datetime.utcnow()
 bot.owner_ids = [842950909159145493,740906193312284715]
@@ -27,15 +32,15 @@ class Help(commands.Cog, name= "Help"):
 
     @commands.group(invoke_without_command=True)
     async def help(self,ctx):
-        em = discord.Embed(title = "Help" , description = " **Prefix For all Commnds Is `.`** \n Use `.help <command>` for more info of the command \n Use `.help <category>` for more help in the category" , color = ctx.author.color)
+        em = discord.Embed(title = "Help" , description = f" **Prefix For all Commnds Is `.`** \n Use `.help <command>` for more info of the command \n Use `.help <category>` for more help in the category" , color = ctx.author.color)
 
-        em.add_field(name = "Botsay", value = "`say`,`eh`,`bruh`,`ok`,`doge`" , inline= False)
+        em.add_field(name = "Botsay", value = f"`say`,`eh`,`bruh`,`ok`,`doge`" , inline= False)
         em.add_field(name = "Reddit", value = "`meme`,`joke`" , inline= False)
         em.add_field(name = "Fun", value = "`egirls`,`rps`,`av`,`8ball`,`kill`" , inline= False)
-        em.add_field(name = "Image" , value = "`.img`,`.cat`,`.dog`" , inline= False)
-        em.add_field(name = "Fact" , value = "`.fact`,`.fact cat`,`.fact dog`" , inline= False)
-        em.add_field(name = "Invite The bot to your server with `.invite`" , value = "_ _" , inline= False)
-        em.add_field(name = "You can change the prefix with `.setprefix`",value =f"_ _", inline= False)
+        em.add_field(name = "Image" , value = "`img`,`cat`,`dog`" , inline= False)
+        em.add_field(name = "Fact" , value = "`fact`,`fact cat`,`fact dog`" , inline= False)
+        em.add_field(name = "Invite The bot to your server with `invite`" , value = "_ _" , inline= False)
+        em.add_field(name = "You can change the prefix with `setprefix`",value =f"_ _", inline= False)
         em.add_field(name = "_ _",value =f"**[Check out My Website!](https://main-index.thehiddenblack1.repl.co)**", inline= False)
 
         await ctx.send(embed = em)
