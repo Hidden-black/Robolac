@@ -47,7 +47,7 @@ async def on_guild_join(guild):
 
 
     e = discord.Embed(title = f"Bot added in :`{guild.name}`", description = f"_ _",color = 0x00FF00)
-    e.add_field(name=f"No of members : {len(guild.members)}")
+    e.add_field(name=f"No of members : {len(guild.members)}",value= f"<t:{int(time.time())}:F>")
     await channel.send(embed = e)
 
 
@@ -65,7 +65,7 @@ async def on_guild_remove(guild):
 
 
     e = discord.Embed(title = f"Bot removed in :`{guild.name}`", description = f"_ _",color = 0xFF0000)
-    e.add_field(name=f"No of members : {len(guild.members)}")
+    e.add_field(name=f"No of members : {len(guild.members)}",value = f"<t:{int(time.time())}:F>")
     await channel.send(embed = e)
 
 @bot.command()                                                  #COMMAND TO SET PREFIX
