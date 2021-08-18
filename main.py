@@ -10,6 +10,7 @@ import jishaku
 import requests
 import pymongo
 import randomstuff
+from discord.ext import menus
 from discord_components import *
 from discord import message
 from random import choice
@@ -27,7 +28,6 @@ def get_prefix(bot,message):
 
 bot = commands.Bot(command_prefix=get_prefix, intents= discord.Intents.all() , case_insensitive=True)
 bot.launch_time = datetime.utcnow()
-bot.owner_ids = ["OWNER ID IN STR FORMAT DELETE THIS IF SINGLE OWNER USERS"]
 bot.remove_command('help')
 bot.load_extension('jishaku')
 
@@ -42,6 +42,15 @@ async def on_guild_join(guild):
     with open('prefix.json','w') as f:
         json.dump(prefix,f,indent=4)
 
+    channel = bot.get_channel(877428062336192542)
+
+
+    e = discord.Embed(title = f"Bot added in :`{guild.name}`", description = f"_ _",color = 0x00FF00)
+    e.add_field(name=f"No of members : {len(guild.members)}")
+    await channel.send(embed = e)
+
+
+
 @bot.event                                                      #PREFIX BEING REMOVED ON GUILD JOIN
 async def on_guild_remove(guild):
     with open('prefix.json','r') as f:
@@ -50,6 +59,13 @@ async def on_guild_remove(guild):
 
     with open('prefix.json','w') as f:
         json.dump(prefix,f,indent=4)
+
+    channel = bot.get_channel(877428062336192542)
+
+
+    e = discord.Embed(title = f"Bot removed in :`{guild.name}`", description = f"_ _",color = 0xFF0000)
+    e.add_field(name=f"No of members : {len(guild.members)}")
+    await channel.send(embed = e)
 
 @bot.command()                                                  #COMMAND TO SET PREFIX
 @commands.has_permissions(manage_channels=True)
@@ -135,7 +151,6 @@ async def on_command_error(ctx,error):
 
 @bot.event                                                      #JUST A COMMAND TO KEEP LOGS
 async def on_command(ctx):
-    channel = bot.get_channel("CHANNEL ID IN STR FORMAT")
     e = discord.Embed(title = f"Command Used in : `{ctx.guild.name}`", description = f"Used by : `{ctx.author.name}`",color = ctx.author.color)
     e.add_field(name=f"Command name : ",value=f"{ctx.command}")
     e.add_field(name=f"Channel : `{ctx.channel.name}`",value= f"ID : {ctx.channel.id}")
@@ -144,7 +159,21 @@ async def on_command(ctx):
 
     await channel.send(embed = e)
 
+class MyMenu(menus.Menu):
+    async def send_initial_message(self, ctx, channel):
+        return await channel.send(f'Hello {ctx.author}')
 
+    @menus.button('\N{THUMBS UP SIGN}')
+    async def on_thumbs_up(self, payload):
+        await self.message.edit(content=f'Thanks {self.ctx.author}!')
+
+    @menus.button('\N{THUMBS DOWN SIGN}')
+    async def on_thumbs_down(self, payload):
+        await self.message.edit(content=f"That's not nice {self.ctx.author}...")
+
+    @menus.button('\N{BLACK SQUARE FOR STOP}\ufe0f')
+    async def on_stop(self, payload):
+        self.stop()
 
 @bot.event                                                     #activity
 async def on_ready():
@@ -177,4 +206,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-"""
+"""bot.run(Token)
