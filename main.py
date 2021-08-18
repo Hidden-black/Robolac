@@ -28,6 +28,7 @@ def get_prefix(bot,message):
 
 bot = commands.Bot(command_prefix=get_prefix, intents= discord.Intents.all() , case_insensitive=True)
 bot.launch_time = datetime.utcnow()
+bot.owner_ids = [842950909159145493,740906193312284715]
 bot.remove_command('help')
 bot.load_extension('jishaku')
 
@@ -151,6 +152,7 @@ async def on_command_error(ctx,error):
 
 @bot.event                                                      #JUST A COMMAND TO KEEP LOGS
 async def on_command(ctx):
+    channel = bot.get_channel(873104600910143490)
     e = discord.Embed(title = f"Command Used in : `{ctx.guild.name}`", description = f"Used by : `{ctx.author.name}`",color = ctx.author.color)
     e.add_field(name=f"Command name : ",value=f"{ctx.command}")
     e.add_field(name=f"Channel : `{ctx.channel.name}`",value= f"ID : {ctx.channel.id}")
@@ -182,28 +184,3 @@ async def on_ready():
     print("Bot is ready!")
 
 bot.run(Token)
-
-
-"""
-MIT License
-
-Copyright (c) 2021 TheHiddenBlack1
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""bot.run(Token)
