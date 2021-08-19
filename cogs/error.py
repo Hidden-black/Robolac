@@ -28,26 +28,30 @@ class Error(commands.Cog, name= "Error"):
     def __init__(self,bot):
         self.bot = bot
     
-    @commands.Cog.listener()                            #ERROR HANDLING
+    @commands.Cog.listener()
     async def on_command_error(self ,ctx ,error):
         if isinstance(error,commands.NotOwner):
             em = discord.Embed(title = 'Error While executing command' ,description="You are not the Bot owner" , color = ctx.author.color)
 
             await ctx.send(embed=em)
+
         elif isinstance(error,commands.MissingRequiredArgument):
             em = discord.Embed(title = 'Error While executing command' ,description="Wrong usage missing required argument" , color = ctx.author.color)
 
             await ctx.send(embed=em)
+
+        elif isinstance(error,commands.MissingPermissions):
+            em = discord.Embed(title = 'Error While executing command' ,description="You don't have the permission to execute this command <:youtried:856440614881984522>" , color = ctx.author.color)
+
+            await ctx.send(embed=em)
+
+        elif isinstance(error,commands.BotMissingPermissions):
+            em = discord.Embed(title = 'Error While executing command' ,description="Bot dont have perms <:cri:871406715797655592>" , color = ctx.author.color)
+
+            await ctx.send(embed=em)
         else:
-            channel = bot.get_channel(873104600910143490)
-            e = discord.Embed(title = f"**ERROR** in `{ctx.guild.name}`", description = f"Used by : `{ctx.author.name}`",color = 0xff0000)
-            e.add_field(name=f"Command name : ",value=f"{ctx.command}")
-            e.add_field(name=f"Channel : `{ctx.channel.name}`",value= f"ID : {ctx.channel.id}")
-            e.add_field(name=f"Used at : ",value= f"<t:{int(time.time())}:F>")
-            e.add_field(name=f"{error}",value="lol")
-            e.add_field(name=f"{ctx.message.jump_url}",value="_ _")
-            
-            await channel.send(embed = e)
+            pass
+
 
 
 def setup(bot):

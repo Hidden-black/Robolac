@@ -26,7 +26,7 @@ class Fun(commands.Cog, name= "Fun"):
 
     @commands.command()                                                                  #address of egirls 
     async def egirls(self,ctx):
-        await ctx.send("https://tenor.com/view/rick-astley-rick-roll-dancing-dance-moves-gif-14097983")
+        await ctx.send("https://imgur.com/CPLIwdO")
         await ctx.send("Get rickrolled lol 😉")
 
     @commands.command()
