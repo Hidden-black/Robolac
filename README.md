@@ -19,8 +19,7 @@ A config.json and prefix.json file appears
 put the token inside Config.json
 next step run the code and
 MAKE SURE BOT IS RUNNING WHILE ADDING IT TO A GUILD
-or u can register the bot prefix by this template in prefix.json<br>
-I recommend using a database like mongodb for storeing token 
+or u can register the bot prefix by this template in prefix.json
 
 {
 "Guild id":"Prefix u want"
