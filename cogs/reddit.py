@@ -26,7 +26,10 @@ class Reddit(commands.Cog, name= "Reddit"):                                     
         memepage = [
             "https://www.reddit.com/r/memes/hot.json",
             "https://www.reddit.com/r/dankmemes/hot.json",
-            "https://www.reddit.com/r/meme/hot.json"]
+            "https://www.reddit.com/r/meme/hot.json"
+            ]
+
+
         async with aiohttp.ClientSession() as cs:
             async with cs.get(f"{random.choice(memepage)}") as r:
                 res = await r.json()
@@ -35,12 +38,17 @@ class Reddit(commands.Cog, name= "Reddit"):                                     
                 title = res['data']['children'] [rm]['data']['title']
                 ups = res['data']['children'] [rm]['data']['ups']
                 com = res['data']['children'] [rm]['data']['num_comments']
+                nsfw = res['data']['children'] [rm]['data']["over_18"]
                 subr = res['data']['children'] [rm]['data']["subreddit_name_prefixed"]
-                em = discord.Embed(title = f'{title}' , description = f"**[Reddit link](http://www.reddit.com{ml})**" , color = ctx.author.color)
-                em.set_image(url = res['data']['children'] [rm] ['data']['url'])
-                em.set_footer(text = f'⬆️{ups} | 💬{com} | {subr}')
 
-                await ctx.send(embed = em)
+                if nsfw == False:
+                    em = discord.Embed(title = f'{title}' , description = f"**[Reddit link](http://www.reddit.com{ml})**" , color = ctx.author.color)
+                    em.set_image(url = res['data']['children'] [rm] ['data']['url'])
+                    em.set_footer(text = f'⬆️{ups} | 💬{com} | {subr}')
+
+                    await ctx.send(embed = em)
+                else:
+                    pass
 
     @commands.command()
     async def joke(self ,ctx):
