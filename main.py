@@ -28,7 +28,6 @@ def get_prefix(bot,message):
 
 bot = commands.Bot(command_prefix=get_prefix, intents= discord.Intents.all() , case_insensitive=True)
 bot.launch_time = datetime.utcnow()
-bot.owner_ids = [842950909159145493,740906193312284715]
 bot.remove_command('help')
 bot.load_extension('jishaku')
 
@@ -61,7 +60,7 @@ async def on_guild_remove(guild):
     with open('prefix.json','w') as f:
         json.dump(prefix,f,indent=4)
 
-    channel = bot.get_channel(877428062336192542)
+    channel = bot.get_channel("Channel id in int format")
 
 
     e = discord.Embed(title = f"Bot removed in :`{guild.name}`", description = f"_ _",color = 0xFF0000)
@@ -150,36 +149,8 @@ async def on_command_error(ctx,error):
         await ctx.send(msg)
         await ctx.message.delete()
 
-@bot.event                                                      #JUST A COMMAND TO KEEP LOGS
-async def on_command(ctx):
-    channel = bot.get_channel(873104600910143490)
-    e = discord.Embed(title = f"Command Used in : `{ctx.guild.name}`", description = f"Used by : `{ctx.author.name}`",color = ctx.author.color)
-    e.add_field(name=f"Command name : ",value=f"{ctx.command}")
-    e.add_field(name=f"Channel : `{ctx.channel.name}`",value= f"ID : {ctx.channel.id}")
-    e.add_field(name=f"Used at : ",value= f"<t:{int(time.time())}:F>")
-    e.add_field(name=f"{ctx.message.jump_url}",value="_ _")
-
-    await channel.send(embed = e)
-
-class MyMenu(menus.Menu):
-    async def send_initial_message(self, ctx, channel):
-        return await channel.send(f'Hello {ctx.author}')
-
-    @menus.button('\N{THUMBS UP SIGN}')
-    async def on_thumbs_up(self, payload):
-        await self.message.edit(content=f'Thanks {self.ctx.author}!')
-
-    @menus.button('\N{THUMBS DOWN SIGN}')
-    async def on_thumbs_down(self, payload):
-        await self.message.edit(content=f"That's not nice {self.ctx.author}...")
-
-    @menus.button('\N{BLACK SQUARE FOR STOP}\ufe0f')
-    async def on_stop(self, payload):
-        self.stop()
-
 @bot.event                                                     #activity
 async def on_ready():
-    await bot.change_presence(activity=discord.Streaming(name="Follow my Twitch lol", url="https://www.twitch.tv/hidden_black_"))
     DiscordComponents(bot)
     print("Bot is ready!")
 

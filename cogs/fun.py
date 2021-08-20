@@ -16,9 +16,6 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-
-bot = commands.Bot(command_prefix='.')
-
 class Fun(commands.Cog, name= "Fun"):
 
     def __init__(self,bot):

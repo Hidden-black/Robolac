@@ -16,10 +16,6 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-bot = commands.Bot(command_prefix=',')
-bot.remove_command('help')
-
-
 class Fact(commands.Cog, name= "FACT"):
 
     def __init__(self,bot):

@@ -16,15 +16,6 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-def get_prefix(bot,message):
-    with open('prefix.json','r') as f:
-        prefix = json.load(f)
-    return prefix[str(message.guild.id)]
-
-bot = commands.Bot(command_prefix='.')
-bot.launch_time = datetime.utcnow()
-bot.owner_ids = [842950909159145493,740906193312284715]
-
 class Help(commands.Cog, name= "Help"):
 
     def __init__(self,bot):

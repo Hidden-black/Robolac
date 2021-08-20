@@ -73,4 +73,3 @@ class Reddit(commands.Cog, name= "Reddit"):                                     
 def setup(bot):
     bot.add_cog(Reddit(bot))
     print("Reddit cog is loaded")
-    

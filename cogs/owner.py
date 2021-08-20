@@ -16,7 +16,6 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-bot = commands.Bot(command_prefix='.')
 bot.launch_time = datetime.utcnow()
 
 class Owner(commands.Cog, name= "Owner"):

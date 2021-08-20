@@ -17,7 +17,6 @@ from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
 bot = commands.Bot(command_prefix='.', intents= discord.Intents.all() , case_insensitive=True)
-bot.owner_ids = [842950909159145493,740906193312284715]
 bot.remove_command('help')
 bot.load_extension('jishaku')
 

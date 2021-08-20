@@ -17,11 +17,6 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-bot = commands.Bot(command_prefix='.')
-bot.launch_time = datetime.utcnow()
-bot.owner_ids = [842950909159145493,740906193312284715]
-bot.remove_command('help')
-
 
 class Error(commands.Cog, name= "Error"):
 
