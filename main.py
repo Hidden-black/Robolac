@@ -29,7 +29,6 @@ def get_prefix(bot,message):
 bot = commands.Bot(command_prefix=get_prefix, intents= discord.Intents.all() , case_insensitive=True)
 bot.launch_time = datetime.utcnow()
 bot.remove_command('help')
-bot.load_extension('jishaku')
 
 
 
@@ -80,7 +79,7 @@ async def setprefix(ctx, prefixset):
     await ctx.send(f"Prefix Changed To `{prefixset}`")
     
 
-
+os.environ["JISHAKU_FORCE_PAGINATOR"] = "True"
 extensions=[
             'cogs.say',
             'cogs.owner',
@@ -91,7 +90,8 @@ extensions=[
             'cogs.help',
             'cogs.error',
             'cogs.fact',
-            'cogs.img'
+            'cogs.img',
+            'jishaku'
 ]
 
 if __name__ == "__main__":
