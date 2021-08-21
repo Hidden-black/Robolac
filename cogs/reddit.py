@@ -69,6 +69,7 @@ class Reddit(commands.Cog, name= "Reddit"):                    #Random Color BAB
                 nsfw = res['data']['children'] [random_joke]['data']["over_18"]
 
                 if nsfw == False:
+                    em = discord.Embed(title = '' ,description=f"**[{title}](http://www.reddit.com{jl})**" , colour = discord.Colour.from_hsv(random.random(), 1, 1))
                     em.add_field(name= f"{text}" , value = '_ _', inline = False)
                     em.set_footer(text = f'⬆️{ups} | 💬{com}')
 
