@@ -24,7 +24,7 @@ def get_prefix(bot,message):
 bot = commands.Bot(command_prefix='.')
 bot.launch_time = datetime.utcnow()
 
-class Help(commands.Cog, name= "Help"):
+class Help(commands.Cog, name= "Help"):    #added muti prefix support 
 
     def __init__(self,bot):
         self.bot = bot
@@ -183,7 +183,7 @@ class Help(commands.Cog, name= "Help"):
     @help.command()
     async def av(self,ctx):
 
-        em = discord.Embed(title = "Av" , description = "Gives avatar of metioned user" , color = ctx.author.color)
+        em = discord.Embed(title = "Avatar" , description = "Gives avatar of metioned user" , color = ctx.author.color)
 
         em.add_field(name = "**Example**" , value = f"{ctx.prefix}av {ctx.author.mention}")
 
