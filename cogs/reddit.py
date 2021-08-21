@@ -16,7 +16,7 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-class Reddit(commands.Cog, name= "Reddit"):                                                     #another bad aiohttp request to eat your ram
+class Reddit(commands.Cog, name= "Reddit"):                    #Random Color BABY!!!!!!!!!!
 
     def __init__(self,bot):
         self.bot = bot
@@ -42,7 +42,7 @@ class Reddit(commands.Cog, name= "Reddit"):                                     
                 subr = res['data']['children'] [rm]['data']["subreddit_name_prefixed"]
 
                 if nsfw == False:
-                    em = discord.Embed(title = f'{title}' , description = f"**[Reddit link](http://www.reddit.com{ml})**" , color = ctx.author.color)
+                    em = discord.Embed(title = f'{title}' , description = f"**[Reddit link](http://www.reddit.com{ml})**" , colour = discord.Colour.from_hsv(random.random(), 1, 1))
                     em.set_image(url = res['data']['children'] [rm] ['data']['url'])
                     em.set_footer(text = f'⬆️{ups} | 💬{com} | {subr}')
 
@@ -69,7 +69,6 @@ class Reddit(commands.Cog, name= "Reddit"):                                     
                 nsfw = res['data']['children'] [random_joke]['data']["over_18"]
 
                 if nsfw == False:
-                    em = discord.Embed(title = '' ,description=f"**[{title}](http://www.reddit.com{jl})**" , color = ctx.author.color)
                     em.add_field(name= f"{text}" , value = '_ _', inline = False)
                     em.set_footer(text = f'⬆️{ups} | 💬{com}')
 
