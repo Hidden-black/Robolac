@@ -34,5 +34,4 @@ or u can register the bot prefix by this template in prefix.json
 - [Top.gg](https://top.gg/bot/845248927652905011)
 - [Discord bot list](https://discordbotlist.com/bots/robolac)
 
-
 P.S. dont tell me about my help command is bad in issues ik it is bad i will work on it
