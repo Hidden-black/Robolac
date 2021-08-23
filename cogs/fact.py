@@ -56,5 +56,5 @@ def setup(bot):
     print("Fact cog is loaded")
 
 """
-ANOTHER FUCKING AIOHTTP COG 
+yey facts
 """

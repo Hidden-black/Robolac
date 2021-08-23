@@ -16,6 +16,10 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
+"""
+MY FIRST CODE I STARTED FROM HERE YES
+"""
+
 class Say(commands.Cog, name= "Say"):
 
     def __init__(self,bot):

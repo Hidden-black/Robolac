@@ -16,7 +16,7 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-class IMG(commands.Cog, name= "IMAGE"): #I AM IDIOT THAT IS WHY IT GETS A REQUEST ON EVERY USE
+class IMG(commands.Cog, name= "IMAGE"): #I AM IDIOT THAT IS WHY IT GETS A REQUEST ON EVERY USE and this dont work
 
     def __init__(self,bot):
         self.bot = bot

@@ -84,7 +84,7 @@ class Fun(commands.Cog, name= "Fun"):
         m = discord.Embed(title = f":8ball: Question: {arg}",description =f"**Answer :** {random.choice(responses)}",color=ctx.author.color)
         await ctx.send(embed=m)
 
-    @commands.command()
+    @commands.command()                                                                         # WHY TF I MADE THIS :?
     async def kill(self,ctx, mem:discord.Member=None):
         if mem == None:
             mem = ctx.author

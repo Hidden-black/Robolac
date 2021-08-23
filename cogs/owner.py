@@ -1,4 +1,4 @@
-import os
+import os                                                           # OWNER ABOOZ 
 import sys
 import json
 import random
@@ -29,12 +29,6 @@ class Owner(commands.Cog, name= "Owner"):
     async def sa(self,ctx, *, arg):
         await ctx.send(arg)
         await ctx.message.delete()
-
-    @commands.command()                                             
-    @commands.is_owner()
-    async def spam(self,ctx, amount:int, *, message):
-        for i in range(amount):
-            await ctx.send(message)
 
     @commands.command()                                                                               
     async def uptime(self,ctx):

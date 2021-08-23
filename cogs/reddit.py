@@ -16,7 +16,7 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-class Reddit(commands.Cog, name= "Reddit"):                    #Random Color BABY!!!!!!!!!!
+class Reddit(commands.Cog, name= "Reddit"):                    #Random Color BABY!!!!!!!!!
 
     def __init__(self,bot):
         self.bot = bot

@@ -26,7 +26,8 @@ class tt(commands.Cog):
         self.client = client
 
 """
-WILL USE THIS COG WHEN MY BOT GET VERIFIED LMAO XD
+WILL USE THIS COG WHEN MY BOT GET VERIFIED
+THAT MEANS NEVER :( 
 """
 
 def setup(bot):

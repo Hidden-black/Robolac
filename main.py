@@ -31,7 +31,6 @@ bot.launch_time = datetime.utcnow()
 bot.remove_command('help')
 
 
-
 @bot.event                                                      #PREFIX BEING ADDED ON GUILD JOIN
 async def on_guild_join(guild):
     with open('prefix.json','r') as f:
@@ -41,15 +40,6 @@ async def on_guild_join(guild):
     with open('prefix.json','w') as f:
         json.dump(prefix,f,indent=4)
 
-    channel = bot.get_channel(877428062336192542)
-
-
-    e = discord.Embed(title = f"Bot added in :`{guild.name}`", description = f"_ _",color = 0x00FF00)
-    e.add_field(name=f"No of members : {len(guild.members)}",value= f"<t:{int(time.time())}:F>")
-    await channel.send(embed = e)
-
-
-
 @bot.event                                                      #PREFIX BEING REMOVED ON GUILD JOIN
 async def on_guild_remove(guild):
     with open('prefix.json','r') as f:
@@ -58,13 +48,6 @@ async def on_guild_remove(guild):
 
     with open('prefix.json','w') as f:
         json.dump(prefix,f,indent=4)
-
-    channel = bot.get_channel("Channel id in int format")
-
-
-    e = discord.Embed(title = f"Bot removed in :`{guild.name}`", description = f"_ _",color = 0xFF0000)
-    e.add_field(name=f"No of members : {len(guild.members)}",value = f"<t:{int(time.time())}:F>")
-    await channel.send(embed = e)
 
 @bot.command()                                                  #COMMAND TO SET PREFIX
 @commands.has_permissions(manage_channels=True)
@@ -80,6 +63,8 @@ async def setprefix(ctx, prefixset):
     
 
 os.environ["JISHAKU_FORCE_PAGINATOR"] = "True"
+
+
 extensions=[
             'cogs.say',
             'cogs.owner',
@@ -94,6 +79,7 @@ extensions=[
             'jishaku'
 ]
 
+
 if __name__ == "__main__":
     for extension in extensions:
         try:
@@ -106,13 +92,14 @@ if os.path.exists(os.getcwd()+"/config.json"):
     
     with open("./config.json") as f:
         configData = json.load(f)
-
 else:
     configTemplate = {"Token":""}
     with open(os.getcwd()+"/config.json" , "w+") as f:
         json.dump(configTemplate, f)
 
+
 Token = configData["Token"]
+
 
 @bot.command()                                                  #LOAD A COG
 @commands.is_owner()
@@ -152,6 +139,13 @@ async def on_command_error(ctx,error):
 @bot.event                                                     #activity
 async def on_ready():
     DiscordComponents(bot)
+    print("-------------------------------------")
     print("Bot is ready!")
 
+
 bot.run(Token)
+
+
+"""
+Hi lol contribute kek
+"""

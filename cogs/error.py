@@ -48,7 +48,6 @@ class Error(commands.Cog, name= "Error"):
             pass
 
 
-
 def setup(bot):
     bot.add_cog(Error(bot))
     print("Error cog is loaded")
