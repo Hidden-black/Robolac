@@ -16,10 +16,6 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-"""
-MY FIRST CODE I STARTED FROM HERE YES
-"""
-
 class Say(commands.Cog, name= "Say"):
 
     def __init__(self,bot):
@@ -48,18 +44,13 @@ class Say(commands.Cog, name= "Say"):
 
     @commands.command()
     async def e(self,ctx):
-        await ctx.send("https://tenor.com/view/enardo-logo-text-gif-14732944")
+        await ctx.send("e?")
         await ctx.message.delete()
 
     @commands.command()
     async def ok(self,ctx):
         await ctx.send("https://tenor.com/view/ok-and-ok-and-caption-trade-gif-21164436")
         await ctx.message.delete()
-
-    @commands.command()
-    async def doge(self,ctx):
-        await ctx.send("**Well i want to confess something**")
-        await ctx.send("Doge is an Idiot")
 
     @commands.command()
     async def gaming(self,ctx):
@@ -69,11 +60,6 @@ class Say(commands.Cog, name= "Say"):
     @commands.command()
     async def tbc(self,ctx):
         await ctx.send("<:To_Be_Continued_3:861520261635637258><:ToBeContinued2:861520333450641409><:ToBeContinued3:861520434645958677>")
-        await ctx.message.delete()
-
-    @commands.command()
-    async def ravi(self,ctx):
-        await ctx.send("<:ravi:854720084005355580>")
         await ctx.message.delete()
 
 def setup(bot):
