@@ -17,7 +17,6 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-
 class Error(commands.Cog, name= "Error"):
 
     def __init__(self,bot):
@@ -34,18 +33,32 @@ class Error(commands.Cog, name= "Error"):
             em = discord.Embed(title = 'Error While executing command' ,description="Wrong usage missing required argument" , color = ctx.author.color)
 
             await ctx.send(embed=em)
-
-        elif isinstance(error,commands.MissingPermissions):
-            em = discord.Embed(title = 'Error While executing command' ,description="You don't have the permission to execute this command <:youtried:856440614881984522>" , color = ctx.author.color)
-
-            await ctx.send(embed=em)
-
-        elif isinstance(error,commands.BotMissingPermissions):
-            em = discord.Embed(title = 'Error While executing command' ,description="Bot dont have perms <:cri:871406715797655592>" , color = ctx.author.color)
-
-            await ctx.send(embed=em)
+        elif isinstance(error, commands.CommandOnCooldown):
+            msg = '**Command on cooldown wait**,{:.2f}s before trying again'.format(error.retry_after)
+            await ctx.send(msg)
+            await ctx.message.delete()
         else:
-            pass
+            channel = self.bot.get_channel(873104600910143490)
+            e = discord.Embed(title = f"Error in : `{ctx.guild.name}`", description = f"Idiot who caused it  : `{ctx.author.name}`",color = 0xff0000)
+            e.add_field(name=f"Command name : ",value=f"{ctx.command}")
+            e.add_field(name=f"Error name : " ,value=f"{error}")
+            e.add_field(name=f"Channel : `{ctx.channel.name}`",value= f"ID : {ctx.channel.id}")
+            e.add_field(name=f"Used at : ",value= f"<t:{int(time.time())}:F>")
+            e.add_field(name=f"{ctx.message.jump_url}",value="_ _")
+
+            await channel.send(embed = e)
+
+
+    @commands.Cog.listener()  # JUST A COMMAND TO KEEP LOGS
+    async def on_command(self,ctx):
+        channel = self.bot.get_channel(873104600910143490)
+        e = discord.Embed(title=f"Command Used in : `{ctx.guild.name}`",description=f"Used by : `{ctx.author.name}`", color=ctx.author.color)
+        e.add_field(name=f"Command name : ", value=f"{ctx.command}")
+        e.add_field(name=f"Channel : `{ctx.channel.name}`",value=f"ID : {ctx.channel.id}")
+        e.add_field(name=f"Used at : ", value=f"<t:{int(time.time())}:F>")
+        e.add_field(name=f"{ctx.message.jump_url}", value="_ _")
+
+        await channel.send(embed=e)
 
 
 def setup(bot):
