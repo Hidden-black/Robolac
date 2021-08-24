@@ -1,4 +1,4 @@
-import os                                                           # OWNER ABOOZ 
+import os                           # OWNER ABOOZ GO Burrrrrrrrr
 import sys
 import json
 import random
@@ -16,9 +16,6 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-bot = commands.Bot(command_prefix=",", intents= discord.Intents.all() , case_insensitive=True)
-bot.launch_time = datetime.utcnow()
-
 class Owner(commands.Cog, name= "Owner"):
 
     def __init__(self,bot):
@@ -30,13 +27,11 @@ class Owner(commands.Cog, name= "Owner"):
         await ctx.send(arg)
         await ctx.message.delete()
 
-    @commands.command()                                                                               
-    async def uptime(self,ctx):
-        delta_uptime = datetime.utcnow() - bot.launch_time
-        hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
-        minutes, seconds = divmod(remainder, 60)
-        days, hours = divmod(hours, 24)
-        await ctx.send(f"{days} Days {hours} Hrs {minutes} Min {seconds} Sec")
+    @commands.command()                                             
+    @commands.is_owner()
+    async def spam(self,ctx, amount:int, *, message):
+        for i in range(amount):
+            await ctx.send(message)
 
     @commands.command()
     @commands.is_owner()
@@ -55,11 +50,27 @@ class Owner(commands.Cog, name= "Owner"):
     async def nick(self,ctx, member: discord.Member, nick):
         await member.edit(nick=nick)
         await ctx.send(f'Nickname was changed for {member.mention} ')
-            
 
+    @commands.command()  # LOAD A COG
+    @commands.is_owner()
+    async def load(self,ctx, extension):
+        self.bot.load_extension(f'cogs.{extension}')
+        await ctx.send(f'loaded {extension}')
+
+
+    @commands.command()  # UNLOAD A COG
+    @commands.is_owner()
+    async def unload(self,ctx, extension):
+        self.bot.unload_extension(f'cogs.{extension}')
+        await ctx.send(f'unloaded {extension}')
+
+
+    @commands.command()  # RELOAD A COG
+    @commands.is_owner()
+    async def reload(self,ctx, extension):
+        self.bot.reload_extension(f'cogs.{extension}')
+        await ctx.send(f'Reloaded {extension}')
+            
 def setup(bot):
     bot.add_cog(Owner(bot))
     print("Owner cog is loaded")
-
-
-    # ANOTHER STUPID COG REMOVE IT IF U WANTs
