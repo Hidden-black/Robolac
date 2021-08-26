@@ -37,6 +37,8 @@ class Error(commands.Cog, name= "Error"):
             msg = '**Command on cooldown wait**,{:.2f}s before trying again'.format(error.retry_after)
             await ctx.send(msg)
             await ctx.message.delete()
+        elif isinstance(error, commands.CommandNotFound):
+            pass
         else:
             channel = self.bot.get_channel(873104600910143490)
             e = discord.Embed(title = f"Error in : `{ctx.guild.name}`", description = f"Idiot who caused it  : `{ctx.author.name}`",color = 0xff0000)
