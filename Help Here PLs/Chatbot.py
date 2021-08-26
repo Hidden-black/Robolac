@@ -1,7 +1,7 @@
 """
 Need Help in this cog pls help :/
-IDK How to store the prefixes
-When 
+IDK How to store the places With Chatbot enabled 
+Help will be appriciated :)
 """
 
 
@@ -24,12 +24,6 @@ from discord.ext.commands.core import command
 import clever_chat
 from clever_chat import AsyncClient
 import asyncio
-
-
-def cbl(bot, message):
-  with open('chb.json', 'r') as f:
-    prefix = json.load(f)
-    return prefix[str(message.channel.id)]
 
 bot = commands.Bot(command_prefix=',', intents= discord.Intents.all() , case_insensitive=True)
 bot.launch_time = datetime.utcnow()
