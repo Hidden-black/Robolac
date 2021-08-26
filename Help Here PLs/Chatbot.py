@@ -61,7 +61,7 @@ async def dcb(ctx):
 async def on_message(message):
   if bot.user == message.author:
     return
-  if message.channel.id == cbl:
+  if message.channel.id == 0:
     response = await AsyncClient.get_response(message.content,message.author.id,
     "Male","Robolac","HiddenBlack a pog person","idk","May 21",
     "Discord dev portal","Robot","Juice WRLD")
