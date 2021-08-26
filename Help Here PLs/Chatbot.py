@@ -1,3 +1,11 @@
+"""
+Need Help in this cog pls help :/
+IDK How to store the prefixes
+When 
+"""
+
+
+
 import os
 import sys
 import json
@@ -40,32 +48,18 @@ else:
 
 Token = configData["Token"]
 
+
+# HELP HERE PLS :(
+
+
 @bot.command()
 async def ecb(ctx):
   e = ctx.channel.id
-
-
-  with open('chb.json', 'r') as f:
-    prefix = json.load(f)
-    prefix[str("E")] = e
-
-  with open('chb.json', 'w') as f:
-    json.dump(prefix, f, indent=4)
-
   await ctx.send(f"Enabled chatbot")
 
 @bot.command()
 async def dcb(ctx):
   e = ctx.channel.id
-
-
-  with open('chb.json', 'r') as f:
-    prefix = json.load(f)
-    prefix.pop(str(e))
-
-  with open('chb.json', 'w') as f:
-    json.dump(prefix, f, indent=4)
-
   await ctx.send('Disabled chatbot')
 
 
@@ -76,7 +70,7 @@ async def on_message(message):
   if message.channel.id == cbl:
     response = await AsyncClient.get_response(message.content,message.author.id,
     "Male","Robolac","HiddenBlack a pog person","idk","May 21",
-    "Discord dev portal","Robot","Tom Cruise")
+    "Discord dev portal","Robot","Juice WRLD")
     await message.reply(response)
   await bot.process_commands(message)
 
