@@ -1,9 +1,7 @@
 # Robolac
 #### A bot by HiddenBlack
 
-> Discord.py Will Now wont be maintained Put any good d.py fork in idk in my dms or something
-
-> # A discord bot to make your experience a fun one!
+> A discord bot to make your experience a fun one!
 
 ---
 [Invite this bot](https://discord.com/oauth2/authorize?client_id=845248927652905011&permissions=2147542016&scope=bot)
@@ -27,6 +25,9 @@ or u can register the bot prefix by this template in prefix.json
 {
 "Guild id":"Prefix u want"
 }
+
+
+# Discord.py Will Now wont be maintained Put any good d.py fork in idk in my dms or something
 
 
 ## Creator Info
