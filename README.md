@@ -1,5 +1,8 @@
 # Robolac
 #### A bot by HiddenBlack
+
+> Discord.py Will Now wont be maintained Put any good d.py fork in idk in my dms or something
+
 > A discord bot to make your experience a fun one!
 
 ---
