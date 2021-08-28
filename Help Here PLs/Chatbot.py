@@ -2,6 +2,8 @@
 Need Help in this cog pls help :/
 IDK How to store the places With Chatbot enabled 
 Help will be appriciated :)
+Using SQLITE3
+Making this 
 """
 
 
