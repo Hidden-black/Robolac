@@ -24,8 +24,12 @@ class Say(commands.Cog, name= "Say"):
     @commands.command()
     @commands.cooldown(1,120,commands.BucketType.user)
     async def say(self,ctx, *, arg):
-        await ctx.send(arg)
-        await ctx.message.delete()
+
+        lol = ["@",""]
+        if "@" in arg:
+            await ctx.send("No")
+        else:
+            await ctx.send(arg)
 
     @commands.command()
     async def alive(self,ctx):
