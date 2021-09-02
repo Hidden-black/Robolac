@@ -28,7 +28,7 @@ or u can register the bot prefix by this template in prefix.json
 }
 
 
-# Discord.py Will Now wont be maintained Put any good d.py fork in idk in my dms or something
+
 
 
 ## Creator Info
