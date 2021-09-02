@@ -41,7 +41,7 @@ class Owner(commands.Cog, name= "Owner"):
 
     @commands.command()
     @commands.is_owner()
-    async def purge(ctx, limit: int):
+    async def purge(self,ctx, limit: int):
             await ctx.channel.purge(limit=limit)
             await ctx.message.delete()
 
