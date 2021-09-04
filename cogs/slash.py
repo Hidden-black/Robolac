@@ -28,6 +28,7 @@ class tt(commands.Cog):
 """
 WILL USE THIS COG WHEN MY BOT GET VERIFIED
 THAT MEANS NEVER :( 
+Yep never
 """
 
 def setup(bot):
