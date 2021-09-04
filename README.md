@@ -41,3 +41,6 @@ or u can register the bot prefix by this template in prefix.json
 
 
 [![Discord Bots](https://top.gg/api/widget/845248927652905011.svg)](https://top.gg/bot/845248927652905011)
+
+
+(Help sucks ngl)
