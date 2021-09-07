@@ -16,43 +16,48 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-class IMG(commands.Cog, name= "IMAGE"): #I AM IDIOT THAT IS WHY IT GETS A REQUEST ON EVERY USE and this dont work
 
-    def __init__(self,bot):
+# I AM IDIOT THAT IS WHY IT GETS A REQUEST ON EVERY USE and this dont work
+class IMG(commands.Cog, name="IMAGE"):
+
+    def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
-    async def dog(self ,ctx):
+    async def dog(self, ctx):
         r = requests.get("https://dog.ceo/api/breeds/image/random")
         res = r.json()
         title = res["message"]
-        m = discord.Embed(title = '' ,description=f"**[Woof...]({title})**" , color = ctx.author.color)
-        m.set_image(url = f"{title}")
-        
-        
-        await ctx.send(embed = m)
+        m = discord.Embed(
+            title='', description=f"**[Woof...]({title})**", color=ctx.author.color)
+        m.set_image(url=f"{title}")
+
+        await ctx.send(embed=m)
 
     @commands.command()
-    async def cat(self , ctx):
-        em = discord.Embed(title = 'Meow...', color = ctx.author.color)
-        em.set_image(url = f"https://source.unsplash.com/1920x1080/?cat")           
-        await ctx.send(embed = em)
+    async def cat(self, ctx):
+        em = discord.Embed(title='Meow...', color=ctx.author.color)
+        em.set_image(url=f"https://source.unsplash.com/1920x1080/?cat")
+        await ctx.send(embed=em)
 
     @commands.command()
-    async def img(self,ctx, arg):
+    async def img(self, ctx, arg):
         async with aiohttp.ClientSession() as cs:
-            async with cs.get(f'https://api.unsplash.com/search/photos?query={arg}&client_id=') as r: #get client_id from UNSPLASH API and make a application their 
+            # get client_id from UNSPLASH API and make a application their
+            async with cs.get(f'https://api.unsplash.com/search/photos?query={arg}&client_id=') as r:
                 res = await r.json()
-                ri = random.randint(0,50)
+                ri = random.randint(0, 50)
                 raw_results = res["results"]
                 first_option = raw_results[0]
                 raw_url = first_option["urls"]
                 url = raw_url["regular"]
-                m = discord.Embed(title = f'Here is your image for {arg}', description="" ,color = ctx.author.color)
-                m.set_image(url = url)
-                m.set_footer(test="😥 Same image on same query till i fix it 🙏Pls wait")
+                m = discord.Embed(
+                    title=f'Here is your image for {arg}', description="", color=ctx.author.color)
+                m.set_image(url=url)
+                m.set_footer(
+                    test="😥 Same image on same query till i fix it 🙏Pls wait")
 
-                await ctx.send(embed = m)
+                await ctx.send(embed=m)
 
 
 def setup(bot):

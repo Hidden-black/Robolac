@@ -11,7 +11,6 @@ import requests
 import pymongo
 import randomstuff
 from discord.ext import menus
-from discord_components import *
 from discord import message
 from random import choice
 from datetime import datetime
@@ -25,12 +24,13 @@ def get_prefix(bot, message):
         with open('prefix.json', 'r') as f:
             prefix = json.load(f)
         return prefix[str(message.guild.id)]
-    
+
     except Exception as e:
         return "."
 
 
-bot = commands.Bot(command_prefix=get_prefix,intents=discord.Intents.all(), case_insensitive=True)
+bot = commands.Bot(command_prefix=get_prefix,
+                   intents=discord.Intents.all(), case_insensitive=True)
 bot.launch_time = datetime.utcnow()
 bot.remove_command('help')
 
@@ -106,15 +106,16 @@ else:
 
 Token = configData["Token"]
 
+
 @bot.event  # IDK WHY I PUT IT HERE LMAO
 async def on_message(message):
     if bot.user.mentioned_in(message):
         await message.add_reaction("<:ping:861565960154251264>")
     await bot.process_commands(message)
 
+
 @bot.event  # activity
 async def on_ready():
-    DiscordComponents(bot)
     await bot.change_presence(activity=discord.Streaming(name="Follow my Twitch lol", url="https://www.twitch.tv/hidden_black_"))
     print("-----------------------------------")
     print("Bot is ready!")

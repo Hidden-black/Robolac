@@ -8,7 +8,6 @@ import discord
 import jishaku
 import requests
 import randomstuff
-from discord_components import *
 from discord import message
 from random import choice
 from datetime import datetime
@@ -16,79 +15,84 @@ from discord.ext import commands
 from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
-class Fun(commands.Cog, name= "Fun"):
 
-    def __init__(self,bot):
+class Fun(commands.Cog, name="Fun"):
+
+    def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()                                                                  #address of egirls 
-    async def egirls(self,ctx):
+    @commands.command()  # address of egirls
+    async def egirls(self, ctx):
         await ctx.send("https://imgur.com/CPLIwdO")
         await ctx.send("Get rickrolled lol 😉")
 
     @commands.command()
-    async def av(self,ctx, *,  avamember : discord.Member=None):
+    async def av(self, ctx, *,  avamember: discord.Member = None):
         if avamember == None:
             avamember = ctx.author
 
-
-        em = discord.Embed(title=f"{avamember}'s PfP", color = ctx.author.color)
+        em = discord.Embed(title=f"{avamember}'s PfP", color=ctx.author.color)
         userAvatarUrl = avamember.avatar_url
-        em.set_image(url = userAvatarUrl)
-        em.set_footer(icon_url= ctx.author.avatar_url , text=f"Genrated by {ctx.author.name}")
+        em.set_image(url=userAvatarUrl)
+        em.set_footer(icon_url=ctx.author.avatar_url,
+                      text=f"Genrated by {ctx.author.name}")
 
-        await ctx.send(embed = em)
+        await ctx.send(embed=em)
 
     @commands.command()
-    async def whois(self, ctx , member : discord.Member):
+    async def whois(self, ctx, member: discord.Member):
         if member == None:
             member = ctx.author
 
-        em = discord.Embed(title = member.name , description = member.mention , color = ctx.author.color)
-        em.add_field(name = "ID" , value = member.id , inline = False)
-        em.set_thumbnail(url = member.avatar_url)
-        em.set_footer(icon_url = ctx.author.avatar_url , text =f"Asked by {ctx.author.name}")
-        await ctx.send(embed = em)
+        em = discord.Embed(title=member.name,
+                           description=member.mention, color=ctx.author.color)
+        em.add_field(name="ID", value=member.id, inline=False)
+        em.set_thumbnail(url=member.avatar_url)
+        em.set_footer(icon_url=ctx.author.avatar_url,
+                      text=f"Asked by {ctx.author.name}")
+        await ctx.send(embed=em)
 
     @commands.command()
     async def invite(self, ctx):
         link = "https://discord.com/api/oauth2/authorize?client_id=845248927652905011&permissions=0&scope=bot%20applications.commands"
-        em = discord.Embed(title = "Invite Bad Bot", description = f"**[Invite Link]({link})**" , color = ctx.author.color)
+        em = discord.Embed(
+            title="Invite Bad Bot", description=f"**[Invite Link]({link})**", color=ctx.author.color)
 
-        await ctx.send(embed = em)
-
+        await ctx.send(embed=em)
 
     @commands.command(aliases=["8ball"])
-    async def eightball(self,ctx,*,arg):
+    async def eightball(self, ctx, *, arg):
         responses = ["It is certain.",
-                    "It is decidedly so.",
-                    "Without a doubt.",
-                    "Yes - definitely.",
-                    "You may rely on it.",
-                    "As I see it, yes.",
-                    "Most likely.",
-                    "Outlook good.",
-                    "Yes.",
-                    "Signs point to yes.",
-                    "Reply hazy, try again.",
-                    "Ask again later.",
-                    "Better not tell you now.",
-                    "Cannot predict now.",
-                    "Concentrate and ask again.",
-                    "Don't count on it.",
-                    "My reply is no.",
-                    "My sources say no.",
-                    "Outlook not so good.",
-                    "Very doubtful."]
-        
-        m = discord.Embed(title = f":8ball: Question: {arg}",description =f"**Answer :** {random.choice(responses)}",color=ctx.author.color)
+                     "It is decidedly so.",
+                     "Without a doubt.",
+                     "Yes - definitely.",
+                     "You may rely on it.",
+                     "As I see it, yes.",
+                     "Most likely.",
+                     "Outlook good.",
+                     "Yes.",
+                     "Signs point to yes.",
+                     "Reply hazy, try again.",
+                     "Ask again later.",
+                     "Better not tell you now.",
+                     "Cannot predict now.",
+                     "Concentrate and ask again.",
+                     "Don't count on it.",
+                     "My reply is no.",
+                     "My sources say no.",
+                     "Outlook not so good.",
+                     "Very doubtful."]
+
+        m = discord.Embed(
+            title=f":8ball: Question: {arg}", description=f"**Answer :** {random.choice(responses)}", color=ctx.author.color)
         await ctx.send(embed=m)
 
-    @commands.command()                                                                         # WHY TF I MADE THIS :?
-    async def kill(self,ctx, mem:discord.Member=None):
+    # WHY TF I MADE THIS :?
+    @commands.command()
+    async def kill(self, ctx, mem: discord.Member = None):
         if mem == None:
             mem = ctx.author
-        
+
         item = [
             "sword",
         ]
@@ -200,67 +204,71 @@ class Fun(commands.Cog, name= "Fun"):
             f"{mem} was stung to death by a Bee",
         ]
 
-        
         await ctx.send(f"{random.choice(msg)}")
 
-
     @commands.command()
-    async def rps(self,ctx):
-        rpso = ["Rock", "Paper","Scissors"]
+    async def rps(self, ctx):
+        rpso = ["Rock", "Paper", "Scissors"]
         comp = choice(rpso)
-        yet = discord.Embed(title = f"{ctx.author.display_name} Choose lol" , description ="> Click On your Option",color = ctx.author.color)
-        win = discord.Embed(title  = f"{ctx.author.display_name} Won!", description =f"> **You won!**\nThe Bot Chose {comp}",color = 0x00FF00)
-        out = discord.Embed(title = f"{ctx.author.display_name} You didnot clicked on Time", description = "**Timeout**", color = 0xFFFFFF)
-        lost = discord.Embed(title = f"{ctx.author.display_name} You Lost!", description = f"> **You lost** \nThe Bot chose {comp}", color = 0xff0000)
-        tie = discord.Embed(title = f"{ctx.author.display_name} LOL A TIE", description = f"> **There Was A tie** \nThe bot chose {comp}", color = 0xFFFF00)
+        yet = discord.Embed(title=f"{ctx.author.display_name} Choose lol",
+                            description="> Click On your Option", color=ctx.author.color)
+        win = discord.Embed(title=f"{ctx.author.display_name} Won!",
+                            description=f"> **You won!**\nThe Bot Chose {comp}", color=0x00FF00)
+        out = discord.Embed(
+            title=f"{ctx.author.display_name} You didnot clicked on Time", description="**Timeout**", color=0xFFFFFF)
+        lost = discord.Embed(title=f"{ctx.author.display_name} You Lost!",
+                             description=f"> **You lost** \nThe Bot chose {comp}", color=0xff0000)
+        tie = discord.Embed(title=f"{ctx.author.display_name} LOL A TIE",
+                            description=f"> **There Was A tie** \nThe bot chose {comp}", color=0xFFFF00)
 
-
-        rck = self.bot.get_emoji(int("<:Rock:868501425720807444>".split(":")[2].replace(">", "")))
-        pap = self.bot.get_emoji(int("<:Paper:868501529106198578>".split(":")[2].replace(">", "")))
-        sci = self.bot.get_emoji(int("<:Scissors:868502651388698674>".split(":")[2].replace(">", "")))
+        rck = self.bot.get_emoji(
+            int("<:Rock:868501425720807444>".split(":")[2].replace(">", "")))
+        pap = self.bot.get_emoji(
+            int("<:Paper:868501529106198578>".split(":")[2].replace(">", "")))
+        sci = self.bot.get_emoji(
+            int("<:Scissors:868502651388698674>".split(":")[2].replace(">", "")))
 
         m = await ctx.send(
             embed=yet,
             components=[
-                [Button(style=1, label = "Rock", emoji = rck),
-                Button(style=2,label="Paper", emoji = pap),
-                Button(style=3,label="Scissors", emoji = sci)],
-            ],
+
+            ]
+
         )
 
         def check(res):
             return ctx.author == res.user and res.channel == ctx.channel
-    
+
         try:
-            res = await self.bot.wait_for("button_click",check=check,timeout=60)
+            res = await self.bot.wait_for("button_click", check=check, timeout=60)
             player = res.component.label
 
-            if player==comp:
-                await m.edit(embed=tie,components=[])
+            if player == comp:
+                await m.edit(embed=tie, components=[])
 
-            if player=="Rock" and comp=="Paper":
-                await m.edit(embed=lost,components=[])
+            if player == "Rock" and comp == "Paper":
+                await m.edit(embed=lost, components=[])
 
-            if player=="Rock" and comp=="Scissors":
-                await m.edit(embed=win,components=[])
+            if player == "Rock" and comp == "Scissors":
+                await m.edit(embed=win, components=[])
 
-            if player=="Paper" and comp=="Scissors":
-                await m.edit(embed=lost,components=[])
+            if player == "Paper" and comp == "Scissors":
+                await m.edit(embed=lost, components=[])
 
-            if player=="Paper" and comp=="Rock":
-                await m.edit(embed=win,components=[])
+            if player == "Paper" and comp == "Rock":
+                await m.edit(embed=win, components=[])
 
-            if player=="Scissors" and comp=="Rock":
-                await m.edit(embed=lost,components=[])
+            if player == "Scissors" and comp == "Rock":
+                await m.edit(embed=lost, components=[])
 
-            if player=="Scissors" and comp=="Paper":
-                await m.edit(embed=win,components=[])
+            if player == "Scissors" and comp == "Paper":
+                await m.edit(embed=win, components=[])
 
         except TimeoutError:
             await m.edit(
                 embed=out,
                 components=[]
-                )
+            )
 
 
 def setup(bot):
