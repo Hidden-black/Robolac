@@ -39,6 +39,7 @@ I am not an idiot
 '''
 
 
+
 def setup(bot):
     bot.add_cog(Help(bot))
     print("Help cog is loaded")
