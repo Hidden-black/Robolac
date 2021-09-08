@@ -32,7 +32,7 @@ or u can register the bot prefix by this template in prefix.json
 
 ## Creator Info
 
-- Twitter - [@hiddenblack](https://twitter.com/Hidden_Black_)
+- Twitter - [@hidden_black_](https://twitter.com/Hidden_Black_)
 - Instagram - [@hiddenblack.dev](https://www.instagram.com/hiddenblack.dev/)
 - [Discord Server](https://discord.gg/5gDzeDgF5U)
 - [Top.gg](https://top.gg/bot/845248927652905011)
