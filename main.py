@@ -19,6 +19,7 @@ from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
 
+
 def get_prefix(bot, message):
     try:
         with open('prefix.json', 'r') as f:
