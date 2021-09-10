@@ -11,8 +11,7 @@
 A discord bot made my HiddenBlack Adds a lot of fun commands to your server <br>
 The default prefix of the bot is `.` But can be changed anythime with `.setprefix` command!<br>
 Robolac is packed with cool commands like Meme and Joke which sends random meme or joke to your server<br>
-Image editing and chatbot is a feature that is being worked on !
-
+Chatbot Comming Soon™
 
 ## How To use
 Note that if u are using this code you should have basic understanding and knowledge about python and discord.py<br>
@@ -33,7 +32,7 @@ or u can register the bot prefix by this template in prefix.json
 
 ## Creator Info
 
-- Twitter - [@hiddenblack](https://twitter.com/Hidden_Black_)
+- Twitter - [@hidden_black_](https://twitter.com/Hidden_Black_)
 - Instagram - [@hiddenblack.dev](https://www.instagram.com/hiddenblack.dev/)
 - [Discord Server](https://discord.gg/5gDzeDgF5U)
 - [Top.gg](https://top.gg/bot/845248927652905011)

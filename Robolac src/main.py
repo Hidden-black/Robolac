@@ -19,6 +19,7 @@ from asyncio import TimeoutError
 from discord.ext.commands.core import command
 
 
+
 def get_prefix(bot, message):
     try:
         with open('prefix.json', 'r') as f:
@@ -30,9 +31,8 @@ def get_prefix(bot, message):
 
 
 bot = commands.Bot(command_prefix=get_prefix,
-                   intents=discord.Intents.all(), case_insensitive=True)
+                   intents=discord.Intents.all(), case_insensitive=True,help_command=MinimalHelpCommand())
 bot.launch_time = datetime.utcnow()
-bot.remove_command('help')
 
 
 @bot.event  # PREFIX BEING ADDED ON GUILD JOIN
