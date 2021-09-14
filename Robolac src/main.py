@@ -31,8 +31,18 @@ def get_prefix(bot, message):
 
 
 bot = commands.Bot(command_prefix=get_prefix,
-                   intents=discord.Intents.all(), case_insensitive=True,help_command=MinimalHelpCommand())
+                   intents=discord.Intents.all(), case_insensitive=True)
 bot.launch_time = datetime.utcnow()
+
+class MyHelpCommand(commands.MinimalHelpCommand):
+    async def send_pages(self):
+        destination = self.get_destination()
+        e = discord.Embed(colour = discord.Colour.from_hsv(random.random(), 1, 1), description='')
+        for page in self.paginator.pages:
+            e.description += page
+        await destination.send(embed=e)
+        
+bot.help_command = MyHelpCommand()
 
 
 @bot.event  # PREFIX BEING ADDED ON GUILD JOIN
