@@ -82,6 +82,7 @@ extensions = [
     'cogs.error',
     'cogs.fact',
     'cogs.img',
+    'cogs.mod',
     'jishaku'
 ]
 
