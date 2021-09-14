@@ -32,9 +32,9 @@ class Fun(commands.Cog, name="Fun"):
             avamember = ctx.author
 
         em = discord.Embed(title=f"{avamember}'s PfP", color=ctx.author.color)
-        userAvatarUrl = avamember.avatar_url
+        userAvatarUrl = avamember.avatar.url
         em.set_image(url=userAvatarUrl)
-        em.set_footer(icon_url=ctx.author.avatar_url,
+        em.set_footer(icon_url=ctx.author.avatar.url,
                       text=f"Genrated by {ctx.author.name}")
 
         await ctx.send(embed=em)
