@@ -62,7 +62,7 @@ class Moderation(commands.Cog):
             await ctx.send(error)
             
     @commands.command(aliases=["banish"])
-    @commands.has_permissions(ban_members=True)
+    @commands.has_permissions(administrator=True)
     async def ban(self, ctx, user: Sinner=None, reason=None):
         """Casts users out of heaven."""
         
@@ -76,6 +76,7 @@ class Moderation(commands.Cog):
             return await ctx.send("Are you trying to ban someone higher than the bot")
 
     @commands.command()
+    @commands.has_permissions(administrator=True)
     async def softban(self, ctx, user: Sinner=None, reason=None):
         """Temporarily restricts access to heaven."""
         
@@ -89,11 +90,13 @@ class Moderation(commands.Cog):
             return await ctx.send("Are you trying to soft-ban someone higher than the bot?")
     
     @commands.command()
+    @commands.has_permissions(administrator=True)
     async def mute(self, ctx, user: Sinner, reason=None):
         """Gives them hell."""
         await mute(ctx, user, reason or "treason") # uses the mute function
     
     @commands.command()
+    @commands.has_permissions(administrator=True)
     async def kick(self, ctx, user: Sinner=None, reason=None):
         if not user: # checks if there is a user 
             return await ctx.send("You must specify a user")
@@ -104,6 +107,7 @@ class Moderation(commands.Cog):
             return await ctx.send("Are you trying to kick someone higher than the bot?")
 
     @commands.command()
+    @commands.has_permissions(administrator=True)
     async def purge(self, ctx, limit: int):
         """Bulk deletes messages"""
         
@@ -111,12 +115,14 @@ class Moderation(commands.Cog):
         await ctx.send(f"Bulk deleted `{limit}` messages") 
     
     @commands.command()
+    @commands.has_permissions(administrator=True)
     async def unmute(self, ctx, user: Redeemed):
         """Unmutes a muted user"""
         await user.remove_roles(discord.utils.get(ctx.guild.roles, name="Muted")) # removes muted role
         await ctx.send(f"{user.mention} has been unmuted")
 
     @commands.command()
+    @commands.has_permissions(administrator=True)
     async def block(self, ctx, user: Sinner=None):
                                 
         if not user: # checks if there is user
@@ -126,6 +132,7 @@ class Moderation(commands.Cog):
         await ctx.send(f"Blocked {user.mention} From #{ctx.channel.name}")
 
     @commands.command()
+    @commands.has_permissions(administrator=True)
     async def unblock(self, ctx, user: Sinner=None):
         """Unblocks a user from current channel"""
                                 
@@ -135,7 +142,8 @@ class Moderation(commands.Cog):
         await ctx.channel.set_permissions(user, send_messages=True) # gives back send messages permissions
         await ctx.send(f"Unblocked {user.mention} From #{ctx.channel.name}")
                                 
-                                
+
+                             
 def setup(bot):
     bot.add_cog(Moderation(bot))
     print("Moderation Cog Is loaded")
