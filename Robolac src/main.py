@@ -37,8 +37,6 @@ bot = commands.Bot(command_prefix=",", intents=discord.Intents.all(
 bot.owner_ids = [842950909159145493, 740906193312284715]
 bot.launch_time = datetime.utcnow()
 
-
-
 class MyHelpCommand(commands.MinimalHelpCommand):
     async def send_pages(self):
         destination = self.get_destination()
