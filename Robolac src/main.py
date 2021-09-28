@@ -68,15 +68,7 @@ async def on_guild_join(guild):
 
 @bot.event  # PREFIX BEING REMOVED ON GUILD JOIN
 async def on_guild_remove(guild):
-    with open('prefix.json', 'r') as f:
-        prefix = json.load(f)
-    prefix.pop(str(guild.id))
-
-    with open('prefix.json', 'w') as f:
-        json.dump(prefix, f, indent=4)
-
-    channel = bot.get_channel(877428062336192542)
-
+    channel = bot.get_channel()
     e = discord.Embed(
         title=f"Bot removed in :`{guild.name}`", description=f"_ _", color=0xFF0000)
     e.add_field(
