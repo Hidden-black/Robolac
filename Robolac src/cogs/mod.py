@@ -111,7 +111,8 @@ class Moderation(commands.Cog):
     async def purge(self, ctx, limit: int):
         """Bulk deletes messages"""
         
-        await ctx.purge(limit=limit + 1) # also deletes your own message
+        await ctx.message.delete()
+        await ctx.purge(limit=limit) # also deletes your own message
         await ctx.send(f"Bulk deleted `{limit}` messages") 
     
     @commands.command()
