@@ -83,7 +83,9 @@ class Owner(commands.Cog, name="Owner"):
         channel = self.bot.get_channel(int(huh))
 
         await channel.send(arg)
-
+"""
+Adding more stuff
+"""
 
 def setup(bot):
     bot.add_cog(Owner(bot))
