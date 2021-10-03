@@ -41,11 +41,11 @@ class Reddit(commands.Cog, name= "Reddit"):
     #             nsfw = res['data']['children'] [rm]['data']["over_18"]
     #             subr = res['data']['children'] [rm]['data']["subreddit_name_prefixed"]
 
+    
     #             if nsfw == False:
     #                 em = discord.Embed(title = f'{title}' , description = f"**[Reddit link](http://www.reddit.com{ml})**" , colour = discord.Colour.from_hsv(random.random(), 1, 1))
     #                 em.set_image(url = res['data']['children'] [rm] ['data']['url'])
     #                 em.set_footer(text = f'⬆️{ups} | 💬{com} | {subr}')
-
     #                 await ctx.send(embed = em)
     #             else:
     #                 pass
