@@ -151,6 +151,7 @@ class Owner(commands.Cog, name="Owner"):
                 if value:
                     await ctx.send(f'```py\n{value}\n```')
             else:
+                
                 self._last_result = ret
                 await ctx.send(f'```py\n{value}{ret}\n```')
 
