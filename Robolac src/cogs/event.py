@@ -14,7 +14,6 @@ from random import choice
 from datetime import *
 from discord.ext import commands
 from asyncio import TimeoutError
-from discord.ext.commands.core import command
 
 
 
