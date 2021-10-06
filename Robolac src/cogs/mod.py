@@ -57,11 +57,6 @@ class Moderation(commands.Cog):
     
     def __init__(self, bot):
         self.bot = bot
-    
-    async def __error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
-            await ctx.send(error)
-            
     @commands.command(aliases=["banish"])
     @commands.has_permissions(administrator=True)
     async def ban(self, ctx, user: Sinner=None, reason=None):
