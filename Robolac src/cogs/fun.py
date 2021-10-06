@@ -40,17 +40,41 @@ class Fun(commands.Cog, name="Fun"):
         await ctx.send(embed=em)
 
     @commands.command()
-    async def whois(self, ctx, member: discord.Member):
-        if member == None:
-            member = ctx.author
+    async def whois(self, ctx , idiot : discord.Member = None):
 
-        em = discord.Embed(title=member.name,
-                           description=member.mention, color=ctx.author.color)
-        em.add_field(name="ID", value=member.id, inline=False)
-        em.set_thumbnail(url=member.avatar_url)
-        em.set_footer(icon_url=ctx.author.avatar_url,
-                      text=f"Asked by {ctx.author.name}")
-        await ctx.send(embed=em)
+        if idiot == None:
+            idiot = ctx.author
+
+        
+
+        try:                # BADGES
+            pass
+        except Exception as e:
+            pass
+
+        
+        # joinedwhen = str(idiot.joined_at)                                     # JOINED AT
+        # datef = datetime.strptime(joinedwhen, '%Y-%m-%d %H:%M:%S.%f%z')
+        # joined_date =  str(datef.strftime("At %H:%M on %d/%m/%Y"))
+
+        exest = discord.utils.format_dt(idiot.joined_at)
+        join_date = discord.utils.format_dt(idiot.created_at)
+
+        # rolel =[]
+        
+        # for idiot in discord.guild.role:
+        #     rolel.append(idiot.role.mention)
+
+        em = discord.Embed(title=f"{idiot}'s PfP", color = idiot.color)
+        em.add_field(name = '**ID:**', value = f'`{idiot.id}`' , inline = False)
+        em.add_field(name = 'Joined At : ' , value = f'{exest}' , inline = True)
+        em.add_field(name = 'Existed on : ' , value = f'{join_date}', inline = True)
+        # em.description = ", ".join([role.mention for role in idiot.roles if role != idiot.guild.default_role])
+
+        em.add_field(name = f'Roles [{len(idiot.roles)}]', value= ', '.join([role.mention for role in idiot.roles if role != idiot.guild.default_role]) , inline = False)
+        em.set_thumbnail(url = idiot.avatar.url)
+
+        await ctx.send(embed = em)
 
     @commands.command()
     async def invite(self, ctx):
