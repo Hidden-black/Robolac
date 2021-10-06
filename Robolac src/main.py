@@ -45,7 +45,7 @@ bot.help_command = MyHelpCommand()
 
 os.environ["JISHAKU_FORCE_PAGINATOR"] = "True"
 
-print("""
+print(r"""
         ______ ___________ _____ _      ___  _____ 
         | ___ \  _  | ___ \  _  | |    / _ \/  __ \\
         | |_/ / | | | |_/ / | | | |   / /_\ \ /  \/
