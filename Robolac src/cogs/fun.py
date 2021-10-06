@@ -39,6 +39,7 @@ class Fun(commands.Cog, name="Fun"):
 
         await ctx.send(embed=em)
 
+        
     @commands.command()
     async def whois(self, ctx , idiot : discord.Member = None):
 
