@@ -28,7 +28,7 @@ class Fun(commands.Cog, name="Fun"):
 
     @commands.command()
     async def av(self, ctx, *,  avamember: discord.Member = None):
-        if avamember == None:
+        if avamember is None:
             avamember = ctx.author
 
         em = discord.Embed(title=f"{avamember}'s PfP", color=ctx.author.color)
@@ -43,7 +43,7 @@ class Fun(commands.Cog, name="Fun"):
     @commands.command()
     async def whois(self, ctx , idiot : discord.Member = None):
 
-        if idiot == None:
+        if idiot is None:
             idiot = ctx.author
 
         
@@ -115,7 +115,7 @@ class Fun(commands.Cog, name="Fun"):
     # WHY TF I MADE THIS :?
     @commands.command()
     async def kill(self, ctx, mem: discord.Member = None):
-        if mem == None:
+        if mem is None:
             mem = ctx.author
 
         item = [
