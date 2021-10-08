@@ -79,6 +79,18 @@ if __name__ == "__main__":
         except Exception as e:
             print(f'error loading {extension}', file=sys.stderr)
             print(e)
+            
+
+@bot.command(aliases=['prefix'])  # COMMAND TO SET PREFIX
+@commands.has_permissions(manage_channels=True)
+async def setprefix(ctx, prefixset):
+    with open('prefix.json', 'r') as f:
+        prefix = json.load(f)
+    prefix[str(ctx.guild.id)] = prefixset
+    with open('prefix.json', 'w') as f:
+        json.dump(prefix, f, indent=4)
+    await ctx.send(f"Prefix Changed To `{prefixset}`")
+            
 
 
 @bot.event  # activity
