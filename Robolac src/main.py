@@ -13,8 +13,6 @@ from discord.ext import tasks
 from datetime import *
 from discord.ext import commands
 
-
-
 def get_prefix(bot, message):
     try:
         with open('prefix.json', 'r') as f:
