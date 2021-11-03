@@ -18,7 +18,7 @@ from discord.ext.commands.core import command
 
 
 # I AM IDIOT THAT IS WHY IT GETS A REQUEST ON EVERY USE and this dont work
-class IMG(commands.Cog, name="IMAGE"):
+class IMG(commands.Cog, name="Image"):
 
     def __init__(self, bot):
         self.bot = bot
