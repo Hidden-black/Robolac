@@ -79,6 +79,18 @@ if __name__ == "__main__":
             print(f'error loading {extension}', file=sys.stderr)
             print(e)
             
+# make a meme command using the reddit api and sent it in an embed
+@bot.command()
+async def meme3(ctx):
+    url = 'https://www.reddit.com/r/memes/top/.json?sort=top&t=day'
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as r:
+            data = await r.json()
+            post = random.choice(data['data']['children'])
+            embed = discord.Embed(title=post['data']['title'], url=post['data']['url'], color=0x00ff00)
+            embed.set_image(url=post['data']['url'])
+            await ctx.send(embed=embed)
+
 
 @bot.command(aliases=['prefix'])  # COMMAND TO SET PREFIX
 @commands.has_permissions(manage_channels=True)
@@ -89,8 +101,6 @@ async def setprefix(ctx, prefixset):
     with open('prefix.json', 'w') as f:
         json.dump(prefix, f, indent=4)
     await ctx.send(f"Prefix Changed To `{prefixset}`")
-            
-
 
 @bot.event  # activity
 async def on_ready():
