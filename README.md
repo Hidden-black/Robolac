@@ -1,6 +1,6 @@
 <img src="https://img.shields.io/tokei/lines/github/hidden-black/robolac">
-# Robolac
-#### A bot by HiddenBlack
+<h1>Robolac</h1>
+<h4> A bot by HiddenBlack </h4>
 
 > A discord bot to make your experience a fun one!
 
