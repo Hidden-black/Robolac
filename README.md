@@ -1,3 +1,4 @@
+https://img.shields.io/tokei/lines/github/hidden-black/robolac
 # Robolac
 #### A bot by HiddenBlack
 
