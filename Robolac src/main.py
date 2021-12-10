@@ -21,8 +21,8 @@ def get_prefix(bot, message):
 
     except Exception as e:
         return "."
-    
-  
+   
+ 
 
 bot = commands.Bot(command_prefix= get_prefix , intents=discord.Intents.all(), case_insensitive=True)
 bot.owner_ids = [842950909159145493, 740906193312284715]
