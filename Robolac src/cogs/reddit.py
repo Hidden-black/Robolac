@@ -21,52 +21,52 @@ class Reddit(commands.Cog, name= "Reddit"):
     def __init__(self,bot):
         self.bot = bot
 
-    # @commands.command()
-    # async def meme(self,ctx):
-    #     memepage = [
-    #         "https://www.reddit.com/r/memes/hot.json",
-    #         "https://www.reddit.com/r/dankmemes/hot.json",
-    #         "https://www.reddit.com/r/meme/hot.json"
-    #         ]
-
-
-    #     async with aiohttp.ClientSession() as cs:
-    #         async with cs.get(f"{random.choice(memepage)}") as r:
-    #             res = await r.json()
-    #             rm = random.randint(1,25)
-    #             ml = res['data']['children'] [rm]['data']['permalink']
-    #             title = res['data']['children'] [rm]['data']['title']
-    #             ups = res['data']['children'] [rm]['data']['ups']
-    #             com = res['data']['children'] [rm]['data']['num_comments']
-    #             nsfw = res['data']['children'] [rm]['data']["over_18"]
-    #             subr = res['data']['children'] [rm]['data']["subreddit_name_prefixed"]
-
-    
-    #             if nsfw == False:
-    #                 em = discord.Embed(title = f'{title}' , description = f"**[Reddit link](http://www.reddit.com{ml})**" , colour = discord.Colour.from_hsv(random.random(), 1, 1))
-    #                 em.set_image(url = res['data']['children'] [rm] ['data']['url'])
-    #                 em.set_footer(text = f'⬆️{ups} | 💬{com} | {subr}')
-    #                 await ctx.send(embed = em)
-    #             else:
-    #                 pass
-
-
     @commands.command()
     async def meme(self,ctx):
+        memepage = [
+            "https://www.reddit.com/r/memes/hot.json",
+            "https://www.reddit.com/r/dankmemes/hot.json",
+            "https://www.reddit.com/r/meme/hot.json"
+            ]
+
+
         async with aiohttp.ClientSession() as cs:
-            async with cs.get(f'https://meme-api.herokuapp.com/gimme') as r:
+            async with cs.get(f"{random.choice(memepage)}") as r:
                 res = await r.json()
+                rm = random.randint(1,25)
+                ml = res['data']['children'] [rm]['data']['permalink']
+                title = res['data']['children'] [rm]['data']['title']
+                ups = res['data']['children'] [rm]['data']['ups']
+                com = res['data']['children'] [rm]['data']['num_comments']
+                nsfw = res['data']['children'] [rm]['data']["over_18"]
+                subr = res['data']['children'] [rm]['data']["subreddit_name_prefixed"]
 
-                title = res['title']
-                link = res['postLink']
-                img = res['url']
-                ups = res['ups']
+    
+                if nsfw == False:
+                    em = discord.Embed(title = f'{title}' , description = f"**[Reddit link](http://www.reddit.com{ml})**" , colour = discord.Colour.from_hsv(random.random(), 1, 1))
+                    em.set_image(url = res['data']['children'] [rm] ['data']['url'])
+                    em.set_footer(text = f'⬆️{ups} | 💬{com} | {subr}')
+                    await ctx.send(embed = em)
+                else:
+                    pass
 
 
-                em = discord.Embed(title = '' ,description=f"**[{title}]({link})**" , colour = discord.Colour.from_hsv(random.random(), 1, 1))
-                em.set_image(url = img)
-                em.set_footer(text = f'⬆️{ups} | 💬 69')
-                await ctx.send(embed=em)
+#     @commands.command()
+#     async def meme(self,ctx):
+#         async with aiohttp.ClientSession() as cs:
+#             async with cs.get(f'https://meme-api.herokuapp.com/gimme') as r:
+#                 res = await r.json()
+
+#                 title = res['title']
+#                 link = res['postLink']
+#                 img = res['url']
+#                 ups = res['ups']
+
+
+#                 em = discord.Embed(title = '' ,description=f"**[{title}]({link})**" , colour = discord.Colour.from_hsv(random.random(), 1, 1))
+#                 em.set_image(url = img)
+#                 em.set_footer(text = f'⬆️{ups} | 💬 69')
+#                 await ctx.send(embed=em)
 
 
 
