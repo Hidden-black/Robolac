@@ -28,7 +28,6 @@ or u can register the bot prefix by this template in prefix.json
 }
 
 
-
 ## Creator Info
 
 - Twitter - [@hidden_black_](https://twitter.com/Hidden_Black_)
