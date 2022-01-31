@@ -53,6 +53,7 @@ print(r"""
                         An Idiot Bot By HiddenBlack
     """)
 
+
 extensions = [
     'cogs.say',
     'cogs.owner',
