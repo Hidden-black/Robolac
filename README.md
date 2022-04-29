@@ -7,6 +7,7 @@
 ---
 [Invite this bot](https://discord.com/oauth2/authorize?client_id=845248927652905011&permissions=2147542016&scope=bot)
 
+
 ## Description
 A discord bot made my HiddenBlack Adds a lot of fun commands to your server <br>
 The default prefix of the bot is `.` But can be changed anythime with `.setprefix` command!<br>
